@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIMENSIONS | Premium 3D Bespoke Interiors</title>
+    
+    <!-- Scripts -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #0b0f17; overflow-x: hidden; }
+        .tracking-premium { letter-spacing: 0.5em; }
+        
+        /* 3D Card Hover */
+        .card-3d { 
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .card-3d:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 40px 80px -15px rgba(0,0,0,0.1);
+            border-color: rgba(0,0,0,0.1);
+        }
+
+        /* Lighting/BG Effect */
+        .bg-studio {
+            background: radial-gradient(circle at center, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 380px;
+            --poster-color: transparent;
+            outline: none;
+            cursor: grab;
+        }
+
+        model-viewer:active { cursor: grabbing; }
+
+        .shine-hover {
+            position: relative;
+            overflow: hidden;
+        }
+        .shine-hover::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: rotate(45deg);
+            transition: 0.7s;
+            opacity: 0;
+        }
+        .shine-hover:hover::after {
+            opacity: 1;
+            left: 100%;
+            top: 100%;
+        }
+
+        .text-glow { text-shadow: 0 0 40px rgba(255,255,255,0.3); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #000; }
+    </style>
+</head>
+<body class="antialiased selection:bg-black selection:text-white">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-[100] bg-white/80 backdrop-blur-md border-b border-gray-100 h-20 flex items-center justify-between px-6 md:px-16">
+        <div class="text-xl font-bold tracking-premium uppercase">Dimensions</div>
+        <div class="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500">
+            <a href="#hero" class="hover:text-black transition-colors">Home</a>
+            <a href="#philosophy" class="hover:text-black transition-colors">Philosophy</a>
+            <a href="#collection" class="hover:text-black transition-colors">Collection</a>
+            <a href="#partners" class="hover:text-black transition-colors">Contact</a>
+        </div>
+        <button class="bg-black text-white px-8 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-neutral-800 transition-all shine-hover">Book Consultation</button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="hero" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover scale-105">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div class="relative z-10 text-white px-6">
+            <p class="text-[10px] md:text-xs font-bold uppercase tracking-[0.6em] mb-6 opacity-80">The Art of Three-Dimensional Living</p>
+            <h1 class="text-6xl md:text-9xl font-bold tracking-premium uppercase mb-8 text-glow">Dimensions</h1>
+            <div class="h-[1px] w-24 bg-white/40 mx-auto mb-8"></div>
+            <h2 class="text-sm md:text-lg font-light tracking-[0.4em] uppercase opacity-90">Bespoke Furniture Visualization</h2>
+        </div>
+    </header>
+
+    <!-- PHILOSOPHY SECTION (3D SOFAS) -->
+    <section id="philosophy" class="py-32 px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-24">
+            <p class="text-amber-700 text-[10px] font-bold uppercase tracking-[0.5em] mb-4">Craftsmanship</p>
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight uppercase">Infinite Forms</h2>
+            <p class="text-gray-400 text-xs uppercase tracking-[0.3em] max-w-lg mx-auto leading-relaxed">Experience tactile elegance through our signature 3D configuration engine.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Philosophy Card 1 -->
+            <div class="card-3d bg-white rounded-xl overflow-hidden group">
+                <div class="bg-studio p-4">
+                    <model-viewer 
+                        src="https://modelviewer.dev/shared-assets/models/Chair.glb" 
+                        auto-rotate camera-controls shadow-intensity="1.5" shadow-softness="1"
+                        exposure="1" ar camera-orbit="45deg 75deg 105%"
+                        alt="The Linear Armchair"></model-viewer>
+                </div>
+                <div class="p-8 text-center">
+                    <h3 class="text-lg font-bold uppercase mb-2">Linear Precision</h3>
+                    <p class="text-gray-500 text-[11px] uppercase tracking-widest leading-relaxed">Geometric harmony designed for contemporary sanctuaries.</p>
+                </div>
+            </div>
+
+            <!-- Philosophy Card 2 -->
+            <div class="card-3d bg-white rounded-xl overflow-hidden group">
+                <div class="bg-studio p-4">
+                    <model-viewer 
+                        src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/SheenChair/glTF-Binary/SheenChair.glb" 
+                        auto-rotate camera-controls shadow-intensity="2" exposure="1.2"
+                        ar style="height: 380px;"
+                        alt="Velvet Lounge"></model-viewer>
+                </div>
+                <div class="p-8 text-center">
+                    <h3 class="text-lg font-bold uppercase mb-2">Textural Depth</h3>
+                    <p class="text-gray-500 text-[11px] uppercase tracking-widest leading-relaxed">Experience the sheen of premium velvet in digital space.</p>
+                </div>
+            </div>
+
+            <!-- Philosophy Card 3 -->
+            <div class="card-3d bg-white rounded-xl overflow-hidden group">
+                <div class="bg-studio p-4">
+                    <model-viewer 
+                        src="https://modelviewer.dev/shared-assets/models/original_otto_nose_heavy.glb" 
+                        auto-rotate camera-controls shadow-intensity="1" exposure="0.8"
+                        ar style="height: 380px;"
+                        alt="Heritage Sofa"></model-viewer>
+                </div>
+                <div class="p-8 text-center">
+                    <h3 class="text-lg font-bold uppercase mb-2">Heritage Sculpt</h3>
+                    <p class="text-gray-500 text-[11px] uppercase tracking-widest leading-relaxed">Timeless silhouettes reimagined for the next generation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSFORMING REALITY SECTION -->
+    <section class="py-32 px-8 bg-[#0b0f17] text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+            <div>
+                <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.5em] mb-6">Digital Atelier</p>
+                <h2 class="text-5xl md:text-8xl font-bold mb-10 tracking-tighter uppercase leading-[0.9]">Beyond <br>Surface</h2>
+                <p class="text-gray-400 text-sm leading-loose mb-12 max-w-sm">Every stitch, grain, and reflection is calculated. We don't just design furniture; we architect atmosphere.</p>
+                <button class="group relative px-12 py-5 border border-white/20 text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                    View 2024 Portfolio
+                </button>
+            </div>
+            <div class="relative grid grid-cols-2 gap-6">
+                <div class="space-y-6">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=600" class="rounded-lg grayscale hover:grayscale-0 transition duration-1000 object-cover h-64 w-full">
+                    <img src="https://images.unsplash.com/photo-1581539250439-c96689b516dd?auto=format&fit=crop&q=80&w=600" class="rounded-lg grayscale hover:grayscale-0 transition duration-1000 object-cover h-80 w-full">
+                </div>
+                <div class="pt-12 space-y-6">
+                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600" class="rounded-lg grayscale hover:grayscale-0 transition duration-1000 object-cover h-80 w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT COLLECTION GRID -->
+    <section id="collection" class="py-32 px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] mb-4">Curated Objects</p>
+                <h2 class="text-4xl md:text-5xl font-bold uppercase tracking-tight">The 3D Collection</h2>
+            </div>
+            <div class="flex gap-4">
+                <span class="text-[10px] font-bold uppercase tracking-widest px-4 py-2 bg-black text-white cursor-pointer">All Pieces</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest px-4 py-2 border border-gray-200 hover:border-black transition cursor-pointer">Limited Edition</span>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- 3D Product 1 -->
+            <div class="bg-white border border-gray-100 group">
+                <div class="relative bg-neutral-100 overflow-hidden">
+                    <model-viewer 
+                        src="https://modelviewer.dev/shared-assets/models/Chair.glb" 
+                        auto-rotate rotation-per-second="25deg" camera-controls 
+                        shadow-intensity="1" class="h-[400px]"
+                        exposure="1" interaction-prompt="none">
+                    </model-viewer>
+                </div>
+                <div class="p-10">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[9px] font-bold text-amber-700 uppercase tracking-widest">Master Suite</span>
+                        <span class="text-[9px] text-gray-400 uppercase font-bold tracking-tighter">SKU: DIM-001</span>
+                    </div>
+                    <h4 class="text-xl font-bold uppercase mb-6 tracking-tight">The Ochre Armchair</h4>
+                    <div class="flex justify-between items-center pt-8 border-t border-gray-100">
+                        <span class="text-xl font-bold">$2,850</span>
+                        <button class="bg-black text-white px-8 py-3 text-[9px] font-bold uppercase tracking-widest hover:bg-neutral-800 transition shine-hover">Inquire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Product 2 -->
+            <div class="bg-white border border-gray-100 group">
+                <div class="relative bg-neutral-100 overflow-hidden">
+                    <model-viewer 
+                        src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/SheenChair/glTF-Binary/SheenChair.glb" 
+                        auto-rotate rotation-per-second="15deg" camera-controls 
+                        shadow-intensity="1" class="h-[400px]"
+                        exposure="1.1" interaction-prompt="none">
+                    </model-viewer>
+                </div>
+                <div class="p-10">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[9px] font-bold text-amber-700 uppercase tracking-widest">Lounge</span>
+                        <span class="text-[9px] text-gray-400 uppercase font-bold tracking-tighter">SKU: DIM-042</span>
+                    </div>
+                    <h4 class="text-xl font-bold uppercase mb-6 tracking-tight">Velvet Sheen Lounge</h4>
+                    <div class="flex justify-between items-center pt-8 border-t border-gray-100">
+                        <span class="text-xl font-bold">$4,100</span>
+                        <button class="bg-black text-white px-8 py-3 text-[9px] font-bold uppercase tracking-widest hover:bg-neutral-800 transition shine-hover">Inquire</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Product 3 -->
+            <div class="bg-white border border-gray-100 group">
+                <div class="relative bg-neutral-100 overflow-hidden">
+                    <model-viewer 
+                        src="https://modelviewer.dev/shared-assets/models/original_otto_nose_heavy.glb" 
+                        auto-rotate rotation-per-second="20deg" camera-controls 
+                        shadow-intensity="1" class="h-[400px]"
+                        exposure="0.9" interaction-prompt="none">
+                    </model-viewer>
+                </div>
+                <div class="p-10">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[9px] font-bold text-amber-700 uppercase tracking-widest">Office</span>
+                        <span class="text-[9px] text-gray-400 uppercase font-bold tracking-tighter">SKU: DIM-088</span>
+                    </div>
+                    <h4 class="text-xl font-bold uppercase mb-6 tracking-tight">Modernist Ottoman</h4>
+                    <div class="flex justify-between items-center pt-8 border-t border-gray-100">
+                        <span class="text-xl font-bold">$1,950</span>
+                        <button class="bg-black text-white px-8 py-3 text-[9px] font-bold uppercase tracking-widest hover:bg-neutral-800 transition shine-hover">Inquire</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section id="partners" class="py-32 px-8 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+            <p class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-16 font-bold">In Collaboration With</p>
+            <div class="flex flex-wrap justify-center gap-16 md:gap-32 opacity-40 grayscale hover:grayscale-0 transition-all duration-1000">
+                <span class="text-xl md:text-3xl font-bold uppercase tracking-widest">Artek</span>
+                <span class="text-xl md:text-3xl font-bold uppercase tracking-widest">Flos</span>
+                <span class="text-xl md:text-3xl font-bold uppercase tracking-widest">Vitra</span>
+                <span class="text-xl md:text-3xl font-bold uppercase tracking-widest">B&B Italia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEGA FOOTER -->
+    <footer class="bg-[#0b0f17] text-white pt-32 pb-12 px-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-20">
+            <div class="col-span-2 md:col-span-1">
+                <div class="text-xl font-bold tracking-premium uppercase mb-8">Dimensions</div>
+                <p class="text-gray-500 text-[10px] leading-relaxed uppercase tracking-widest">The world's first true 3D bespoke interior agency. Redefining spatial reality since 2018.</p>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-bold uppercase tracking-widest mb-8 text-amber-500">Navigation</h4>
+                <ul class="text-[10px] space-y-4 text-gray-500 font-bold uppercase tracking-widest">
+                    <li><a href="#" class="hover:text-white transition">Configurator</a></li>
+                    <li><a href="#" class="hover:text-white transition">The Archive</a></li>
+                    <li><a href="#" class="hover:text-white transition">Materials Library</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-bold uppercase tracking-widest mb-8 text-amber-500">Studio</h4>
+                <p class="text-[10px] text-gray-500 tracking-widest uppercase font-bold mb-4">London | Milan | NYC</p>
+                <p class="text-[10px] text-gray-500 tracking-widest uppercase font-bold">studio@dimensions.design</p>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-bold uppercase tracking-widest mb-8 text-amber-500">Join the Circle</h4>
+                <input type="email" placeholder="YOUR EMAIL" class="bg-transparent border-b border-gray-800 w-full py-2 text-[10px] outline-none focus:border-amber-500 transition">
+            </div>
+        </div>
+        <div class="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[9px] text-gray-600 tracking-[0.5em] uppercase font-bold">&copy; 2024 Dimensions Design Studio.</p>
+            <div class="flex gap-8 text-[9px] text-gray-600 font-bold uppercase tracking-widest">
+                <span>Instagram</span>
+                <span>Behance</span>
+                <span>LinkedIn</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
